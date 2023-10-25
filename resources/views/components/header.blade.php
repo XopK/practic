@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Capybara.com</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -17,9 +17,14 @@
                     <a class="nav-link active" href="/#enroll">Записаться</a>
                 </li>
                 <div class="d-flex" style="gap: 10px">
-                    <a href="/login" class="btn btn-outline-primary">Вход</a>
-                    <a href="/reg" class="btn btn-outline-success">Регистрация</a>
-                    <a href="/acc" class="btn btn-primary">Личный кабинет</a>
+                    @guest
+                        <a href="/login" class="btn btn-outline-primary">Вход</a>
+                        <a href="/reg" class="btn btn-outline-success">Регистрация</a>
+                    @endguest
+                    @auth
+                        <a href="/acc" class="btn btn-primary">Личный кабинет</a>
+                        <a href="" class="btn btn-danger">Выход</a>
+                    @endauth
                 </div>
             </ul>
         </div>

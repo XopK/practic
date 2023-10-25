@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -18,11 +20,22 @@ class UserController extends Controller
         $request->validate([
             "email" => "required|email",
             "pass" => "required"
-        ],[
+        ], [
             "email.required" => "Поле обязательно для заполнения",
             "email.email" => "Введите правильный адрес",
             "pass.required" => "Поле обязательно для заполнения",
         ]);
+
+        $user = $request->only("email", "pass");
+
+        if (Auth::attempt([
+            "email" => $user['email'],
+            "password" => $user['pass']
+        ])) {
+            return redirect("/")->with("succes", "");
+        }else{
+            return  redirect()->back()->with("error", "");
+        }
     }
 
     public function register()
@@ -43,7 +56,8 @@ class UserController extends Controller
                 "email.unique" => "Данный адрес занят",
                 "pass.required" => "Поле обязательно для заполнения",
                 "confirm.required" => "Поле обязательно для заполнения",
-                "name.required" => "Поле обязательно для заполнения"
+                "name.required" => "Поле обязательно для заполнения",
+                "confirm.same" => "Пароли должны совпадать"
             ]
         );
 
@@ -51,7 +65,7 @@ class UserController extends Controller
 
         User::create([
             "email" => $userInfo['email'],
-            "password" => $userInfo['pass'],
+            "password" => Hash::make($userInfo['pass']),
             "name" => $userInfo['name'],
         ]);
         return redirect("/login")->with("succes", "");
