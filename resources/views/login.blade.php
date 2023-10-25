@@ -14,6 +14,9 @@
 <body>
 <x-header/>
 <div class="container" style="margin-top: 40px; width: 50%;">
+    @if(session("error"))
+        {{session("error")}}
+    @endif
     <h1>Авторизация</h1>
     <form action="/login-valid" method="post">
         @csrf

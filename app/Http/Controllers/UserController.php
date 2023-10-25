@@ -35,7 +35,7 @@ class UserController extends Controller
         ])) {
             return redirect("/")->with("succes", "");
         }else{
-            return  redirect()->back()->with("error", "");
+            return  redirect()->back()->with("error", "Неверный логин или пароль!!!");
         }
     }
 
