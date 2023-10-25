@@ -23,7 +23,7 @@
                     @endguest
                     @auth
                         <a href="/acc" class="btn btn-primary">Личный кабинет</a>
-                        <a href="" class="btn btn-danger">Выход</a>
+                        <a href="/logout" class="btn btn-danger">Выход</a>
                     @endauth
                 </div>
             </ul>

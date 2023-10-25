@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -69,6 +70,12 @@ class UserController extends Controller
             "name" => $userInfo['name'],
         ]);
         return redirect("/login")->with("succes", "");
+    }
+
+    public function signout(){
+        Session::flush();
+        Auth::logout();
+        return redirect("/");
     }
 
     public function account()
