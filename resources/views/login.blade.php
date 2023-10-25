@@ -19,7 +19,7 @@
         @csrf
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Почта</label>
-            <input type="email" class="form-control" name="email" id="exampleFormControlInput1">
+            <input type="email" class="form-control" name="email" value="{{old('email')}}" id="exampleFormControlInput1">
             @error('email')
             <div class="alert alert-danger" role="alert">
                 {{$message}}</div>
@@ -27,7 +27,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Пароль</label>
-            <input type="password" class="form-control" name="pass" id="exampleFormControlInput2">
+            <input type="password" class="form-control" name="pass" value="{{old('pass')}}" id="exampleFormControlInput2">
             @error('pass')
             <div class="alert alert-danger" role="alert">
                 {{$message}}</div>
