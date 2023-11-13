@@ -79,9 +79,10 @@
             <div class="container">
                 <h2 style="margin:20px 0 20px 0">Курсы</h2>
                 <div class="d-flex flex-wrap">
-                    @foreach ($courses as $item)
+                    @forelse ($courses as $item)
                         <div class="card" style="width: 18rem; margin: 10px 30px 0 0;">
-                            <img src='storage/img/{{ $item->image }}' class="card-img-top" alt="IMG_2152.png">
+                            <img src='storage/img/{{ $item->image }}' class="card-img-top" loading="lazy"
+                                alt="IMG_2152.png">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $item->title }}</h5>
                                 <p class="card-text">{{ $item->description }}</p>
@@ -90,8 +91,14 @@
                                 <a href="#" class="btn btn-primary">Купить</a>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="card-body">
+                            Пусто
+                        </div>
+                    @endforelse
                 </div>
+                <div class="div" style="margin-right: 55px">
+                    {{ $courses->withQueryString()->links('pagination::bootstrap-5') }}</div>
             </div>
         </section>
 

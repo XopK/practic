@@ -34,8 +34,8 @@ class UserController extends Controller
             "password" => $user['pass']
         ])) {
             return redirect("/")->with("succes", "");
-        }else{
-            return  redirect()->back()->with("error", "Неверный логин или пароль!!!");
+        } else {
+            return redirect()->back()->with("error", "Неверный логин или пароль!!!");
         }
     }
 
@@ -72,7 +72,8 @@ class UserController extends Controller
         return redirect("/login")->with("succes", "");
     }
 
-    public function signout(){
+    public function signout()
+    {
         Session::flush();
         Auth::logout();
         return redirect("/");
