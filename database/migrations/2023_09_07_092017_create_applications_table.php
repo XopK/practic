@@ -15,13 +15,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('applications', function (Blueprint $table) {
-            $table->id();
-            $table->string("email", 70);
-            $table->string("name", 50);
-            $table->foreignIdFor(Course::class);
-            $table->foreignId("course_id")->references("id")->on("courses");
-            $table->boolean("is_confirm")->default(0);
-            $table->timestamps();
+            $table->id(); 
+            $table->string("email", 70); 
+            $table->string("name", 50); 
+            $table->foreignIdFor(Course::class); //course_id 
+            $table->foreign("course_id")->references("id")->on("courses"); 
+            $table->boolean("is_confirm")->default(0); 
+            $table->timestamp('created_at')->useCurrent(); 
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 
