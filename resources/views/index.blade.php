@@ -17,7 +17,7 @@
         height: 75vh;
         width: 100%;
         overflow: hidden;
-        background-image: url("storage/img/programming-languages.jpg");
+        background-image: url("storage/img/kak-prodvigat-site-s-pomoshu-izobrajeniy-min.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 50% 20%;
@@ -100,6 +100,32 @@
                 <div class="div" style="margin-right: 55px">
                     {{ $courses->withQueryString()->links('pagination::bootstrap-5') }}</div>
             </div>
+        </section>
+        <section id="categories">
+            <div class="container">
+                <h2 style="margin:20px 0 20px 0">Категории</h2>
+                <div class="accordion accordion-flush" style="border: 1px solid rgb(201, 201, 201)"
+                    id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                Выберите курсы
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    @foreach ($categories as $category)
+                                    <li><a style="text-decoration: none; font-size: 18px" href="/categories/{{$category->id}}">{{$category->title}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </section>
 
         {{-- @foreach ($errors->all() as $item)

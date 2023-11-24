@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Category;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +13,8 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::paginate(4);
-        return view("index", ["courses" => $courses]);
+        $category = Category::all();
+        return view("index", ["courses" => $courses, 'categories' => $category]);
     }
 
     public function create(Request $request)
