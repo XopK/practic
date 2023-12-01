@@ -14,11 +14,11 @@
 
 <body>
     <x-header />
-    <div class="container" style="margin-top: 40px; width: 50%;">
+    <div class="container" style="margin-top: 40px;">
         <h1>{{ $cate->title }}</h1>
         @forelse ($courses as $item)
             <div class="d-flex flex-wrap">
-                <div class="card" style="width: 18rem; margin: 10px 30px 0 0;">
+                <div class="card" style=" margin: 10px 30px 0 0;">
                     <img src='/storage/img/{{ $item->image }}' class="card-img-top" loading="lazy" alt="IMG_2152.png">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->title }}</h5>
@@ -28,10 +28,11 @@
                         <a href="#" class="btn btn-primary">Купить</a>
                     </div>
                 </div>
-            @empty
-                <div class="card-body">
-                    Пусто
-                </div>
+            </div>
+        @empty
+            <div class="card-body">
+                Пусто
+            </div>
         @endforelse
     </div>
     </div>
